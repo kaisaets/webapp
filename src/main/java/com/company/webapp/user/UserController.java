@@ -46,7 +46,19 @@ public class UserController {
             model.addAttribute("pageTitle", "Edit User (ID: " + id + ")");
             return "user_form";
         } catch (UserNotFoundException e) {
-            throw new RuntimeException(e);
+            ra.addFlashAttribute("message", e.getMessage());
+            return "redirect:/users";
         }
+    }
+
+    @GetMapping("/users/delete/{id}")
+    public String deleteUser(@PathVariable("id") int id, RedirectAttributes ra){
+        try {
+            service.delete(id);
+            ra.addFlashAttribute("message", "The user with ID " + id + " has been deleted successfully");
+        } catch (UserNotFoundException e) {
+            ra.addFlashAttribute("message", e.getMessage());
+        }
+        return "redirect:/users";
     }
   }
