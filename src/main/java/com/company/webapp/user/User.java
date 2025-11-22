@@ -1,4 +1,4 @@
-package com.mycompany.mywebapp.user;
+package com.company.webapp.user;
 
 import jakarta.persistence.*;
 
@@ -21,6 +21,8 @@ public class User {
 
     @Column(nullable=false, length = 45, name = "last_name")
     private String lastName;
+
+    private boolean enabled;
 
 
     public Integer getId() {
@@ -72,5 +74,13 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

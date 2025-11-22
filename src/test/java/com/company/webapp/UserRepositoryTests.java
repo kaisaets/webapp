@@ -1,7 +1,7 @@
-package com.mycompany.mywebapp;
+package com.company.webapp;
 
-import com.mycompany.mywebapp.user.User;
-import com.mycompany.mywebapp.user.UserRepository;
+import com.company.webapp.user.User;
+import com.company.webapp.user.UserRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +21,10 @@ public class UserRepositoryTests {
     @Test
     public void testAddNew() {
         User user = new User();
-        user.setFirstName("Mari");
-        user.setLastName("Maasikas");
+        user.setFirstName("Heli");
+        user.setLastName("Kopter");
         user.setPassword("helikopter");
-        user.setEmail("marimaasikas@marimaasikas.ee");
+        user.setEmail("helikopter@voco.ee");
 
         User savedUser = repo.save(user);
 
@@ -34,7 +34,7 @@ public class UserRepositoryTests {
 
     @Test
     public void testListAll()  {
-        Iterable<User> users = repo.findAll();
+        Iterable<User> users = repo.findAll();}
         Assertions.assertThat(users).hasSizeGreaterThan(0);
 
         for (User user : users) {
@@ -55,7 +55,7 @@ public class UserRepositoryTests {
 
     @Test
     public void testGet() {
-        Integer userId = 3;
+        Integer userId = 1;
         Optional<User> optionalUser = repo.findById(userId);
 
         Assertions.assertThat(optionalUser).isPresent();
@@ -64,7 +64,7 @@ public class UserRepositoryTests {
 
     @Test
     public void testDelete() {
-        Integer userId = 3;
+        Integer userId = 2;
         repo.deleteById(userId);
 
         Optional<User> optionalUser = repo.findById(userId);

@@ -1,4 +1,4 @@
-package com.mycompany.mywebapp.user;
+package com.company.webapp.user;
 
 import org.springframework.data.repository.CrudRepository;
 
